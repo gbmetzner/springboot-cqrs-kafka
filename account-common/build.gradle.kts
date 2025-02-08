@@ -1,7 +1,6 @@
 plugins {
     java
-    id("org.springframework.boot") version "3.4.2"
-    id("io.spring.dependency-management") version "1.1.7"
+    id("io.freefair.lombok") version "8.12.1"
 }
 
 group = "com.gbm"
@@ -24,11 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(project(":cqrs-core"))
 }
 
 tasks.withType<Test> {
