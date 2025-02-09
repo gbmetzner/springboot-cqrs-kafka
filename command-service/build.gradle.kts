@@ -1,8 +1,8 @@
 plugins {
-    java
-    id("io.freefair.lombok") version "8.12.1"
-    id("org.springframework.boot") version "3.4.2"
-    id("io.spring.dependency-management") version "1.1.7"
+    id("io.freefair.lombok")
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    id("com.diffplug.spotless")
 }
 
 group = "com.gbm"
@@ -36,4 +36,12 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        eclipse()
+        formatAnnotations()
+    }
 }

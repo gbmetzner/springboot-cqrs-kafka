@@ -1,7 +1,7 @@
 plugins {
-    java
-    id("org.springframework.boot") version "3.4.2"
-    id("io.spring.dependency-management") version "1.1.7"
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    id("com.diffplug.spotless")
 }
 
 group = "com.gbm"
@@ -33,4 +33,12 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        eclipse()
+        formatAnnotations()
+    }
 }

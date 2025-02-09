@@ -15,5 +15,5 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = true)
 public class FundsDepositedEvent extends BaseEvent {
 
-    private BigDecimal amount;
+	private BigDecimal amount;
 }

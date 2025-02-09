@@ -9,5 +9,5 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class WithDrawFundsCommand extends BaseCommand {
-    private BigDecimal amount;
+	private BigDecimal amount;
 }

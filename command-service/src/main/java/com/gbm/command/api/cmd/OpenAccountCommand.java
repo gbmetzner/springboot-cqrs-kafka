@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class OpenAccountCommand extends BaseCommand {
-    private String accountHolder;
-    private AccountType accountType;
-    private BigDecimal balance;
+	private String accountHolder;
+	private AccountType accountType;
+	private BigDecimal balance;
 }

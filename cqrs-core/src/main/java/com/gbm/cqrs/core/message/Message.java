@@ -10,5 +10,5 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class Message {
-    private String id;
+	private String id;
 }

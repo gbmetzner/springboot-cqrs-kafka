@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 public class AccountOpenedEvent extends BaseEvent {
-    private String accountHolder;
-    private AccountType accountType;
-    private OffsetDateTime createTime;
-    private BigDecimal balance;
+	private String accountHolder;
+	private AccountType accountType;
+	private OffsetDateTime createTime;
+	private BigDecimal balance;
 }

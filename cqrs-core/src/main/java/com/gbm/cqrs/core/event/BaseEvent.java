@@ -13,5 +13,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 public abstract class BaseEvent extends Message {
-    private int version;
+	private int version;
 }
