@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 public class AccountAggregate extends AggregateRoot {
 
-	private Boolean active;
+	private boolean active;
 	private BigDecimal balance;
 
 	public AccountAggregate(OpenAccountCommand command) {
@@ -25,7 +25,30 @@ public class AccountAggregate extends AggregateRoot {
 				.createTime(OffsetDateTime.now()).balance(command.getBalance()).build();
 
 		raiseEvent(accountOpenedEvent);
+	}
 
+	public void depositFunds(BigDecimal amount) {
+		if (!this.active) {
+			throw new IllegalStateException("Funds cannot be deposited into a closed bank account");
+		}
+		if (this.balance.compareTo(amount) <= 0) {
+			throw new IllegalStateException("Deposit amount must be greater than zero");
+		}
+		raiseEvent(FundsDepositedEvent.builder().id(this.id).amount(amount).build());
+	}
+
+	public void withdrawFunds(BigDecimal amount) {
+		if (!this.active) {
+			throw new IllegalStateException("Funds cannot be withdrawn from a closed bank account");
+		}
+		raiseEvent(FundsWithdrawnEvent.builder().id(this.id).amount(amount).build());
+	}
+
+	public void closeAccount() {
+		if (!this.active) {
+			throw new IllegalStateException("Bank account already closed");
+		}
+		raiseEvent(AccountClosedEvent.builder().id(this.id).build());
 	}
 
 	@Override

@@ -12,18 +12,16 @@ java {
     }
 }
 
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
     implementation(project(":cqrs-core"))
+}
+
+tasks.withType<JavaCompile> {
+    dependsOn("spotlessApply")
 }
 
 tasks.withType<Test> {
