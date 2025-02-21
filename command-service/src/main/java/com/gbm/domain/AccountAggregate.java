@@ -7,6 +7,7 @@ import com.gbm.account.common.event.FundsWithdrawnEvent;
 import com.gbm.command.api.cmd.OpenAccountCommand;
 import com.gbm.cqrs.core.domain.AggregateRoot;
 import com.gbm.cqrs.core.event.BaseEvent;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.time.OffsetDateTime;
 public class AccountAggregate extends AggregateRoot {
 
 	private boolean active;
+	@Getter
 	private BigDecimal balance;
 
 	public AccountAggregate(OpenAccountCommand command) {

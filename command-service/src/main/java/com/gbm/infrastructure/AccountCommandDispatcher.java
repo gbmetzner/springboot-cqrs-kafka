@@ -10,16 +10,16 @@ import java.util.*;
 @Service
 public class AccountCommandDispatcher implements CommandDispatcher {
 
-	private final Map<Class<? extends BaseCommand>, List<CommandHandlerMethod<BaseCommand>>> routes = new HashMap<>();
+	private final Map<Class<? extends BaseCommand>, List<CommandHandlerMethod>> routes = new HashMap<>();
 
 	@Override
-	public <T extends BaseCommand> void registerHandler(Class<T> type, CommandHandlerMethod<BaseCommand> handler) {
+	public <T extends BaseCommand> void registerHandler(Class<T> type, CommandHandlerMethod<T> handler) {
 		var handlers = routes.computeIfAbsent(type, k -> new LinkedList<>());
 		handlers.add(handler);
 	}
 
 	@Override
-	public void send(BaseCommand command) {
+	public <T extends BaseCommand> void send(T command) {
 		var handlers = routes.get(command.getClass());
 
 		if (handlers == null || handlers.isEmpty()) {
