@@ -5,6 +5,7 @@ import com.gbm.cqrs.core.event.EventModel;
 import com.gbm.cqrs.core.exception.AggregateNotFoundException;
 import com.gbm.cqrs.core.exception.ConcurrencyException;
 import com.gbm.cqrs.core.infrastructure.EventStore;
+import com.gbm.cqrs.core.producer.EventProducer;
 import com.gbm.domain.AccountAggregate;
 import com.gbm.domain.EventStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ import java.util.stream.Collectors;
 public class AccountEventStore implements EventStore {
 
 	private final EventStoreRepository eventStoreRepository;
+	private final EventProducer eventProducer;
 
 	@Autowired
-	public AccountEventStore(EventStoreRepository eventStoreRepository) {
+	public AccountEventStore(EventStoreRepository eventStoreRepository, EventProducer eventProducer) {
 		this.eventStoreRepository = eventStoreRepository;
+		this.eventProducer = eventProducer;
 	}
 
 	@Override
@@ -39,8 +42,8 @@ public class AccountEventStore implements EventStore {
 					.eventType(event.getClass().getTypeName()).eventData(event).build();
 
 			var persistedEvent = eventStoreRepository.save(eventModel);
-			if (persistedEvent != null) {
-
+			if (!persistedEvent.getId().isEmpty()) {
+				eventProducer.produce(event.getClass().getSimpleName(), event);
 			}
 		}
 	}
