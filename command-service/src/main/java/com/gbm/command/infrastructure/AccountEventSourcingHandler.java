@@ -1,10 +1,10 @@
-package com.gbm.infrastructure;
+package com.gbm.command.infrastructure;
 
 import com.gbm.cqrs.core.domain.AggregateRoot;
 import com.gbm.cqrs.core.event.BaseEvent;
 import com.gbm.cqrs.core.handler.EventSourcingHandler;
 import com.gbm.cqrs.core.infrastructure.EventStore;
-import com.gbm.domain.AccountAggregate;
+import com.gbm.command.domain.AccountAggregate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.gbm.domain;
+package com.gbm.command.domain;
 
 import com.gbm.cqrs.core.event.EventModel;
 import org.springframework.data.mongodb.repository.MongoRepository;

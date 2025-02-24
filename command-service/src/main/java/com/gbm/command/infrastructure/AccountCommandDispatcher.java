@@ -1,4 +1,4 @@
-package com.gbm.infrastructure;
+package com.gbm.command.infrastructure;
 
 import com.gbm.cqrs.core.command.BaseCommand;
 import com.gbm.cqrs.core.command.CommandHandlerMethod;

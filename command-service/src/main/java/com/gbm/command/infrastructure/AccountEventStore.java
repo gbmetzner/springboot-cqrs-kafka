@@ -1,4 +1,4 @@
-package com.gbm.infrastructure;
+package com.gbm.command.infrastructure;
 
 import com.gbm.cqrs.core.event.BaseEvent;
 import com.gbm.cqrs.core.event.EventModel;
@@ -6,8 +6,8 @@ import com.gbm.cqrs.core.exception.AggregateNotFoundException;
 import com.gbm.cqrs.core.exception.ConcurrencyException;
 import com.gbm.cqrs.core.infrastructure.EventStore;
 import com.gbm.cqrs.core.producer.EventProducer;
-import com.gbm.domain.AccountAggregate;
-import com.gbm.domain.EventStoreRepository;
+import com.gbm.command.domain.AccountAggregate;
+import com.gbm.command.domain.EventStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

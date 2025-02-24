@@ -1,4 +1,4 @@
-package com.gbm.domain;
+package com.gbm.command.domain;
 
 import com.gbm.account.common.event.AccountClosedEvent;
 import com.gbm.account.common.event.AccountOpenedEvent;

@@ -1,5 +1,5 @@
 server:
-  port: 5001
+  port: 7002
 
 spring:
   application:
@@ -10,10 +10,10 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc://mysql://localhost:3306/bank_account?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/bank_account?createDatabaseIfNotExist=true
     hikari:
       username: root
-      password: zLRhup6JxM
+      password: root
   kafka:
     listener:
       ack-mode: MANUAL_IMMEDIATE
