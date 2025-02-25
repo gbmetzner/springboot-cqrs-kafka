@@ -1,30 +1,33 @@
 package com.gbm.command.infrastructure;
 
-import com.gbm.cqrs.core.event.BaseEvent;
-import com.gbm.cqrs.core.event.EventModel;
-import com.gbm.cqrs.core.exception.AggregateNotFoundException;
-import com.gbm.cqrs.core.exception.ConcurrencyException;
+import com.gbm.cqrs.core.events.BaseEvent;
+import com.gbm.cqrs.core.events.EventModel;
+import com.gbm.cqrs.core.exceptions.AggregateNotFoundException;
+import com.gbm.cqrs.core.exceptions.ConcurrencyException;
 import com.gbm.cqrs.core.infrastructure.EventStore;
-import com.gbm.cqrs.core.producer.EventProducer;
+import com.gbm.cqrs.core.producers.EventProducer;
 import com.gbm.command.domain.AccountAggregate;
 import com.gbm.command.domain.EventStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AccountEventStore implements EventStore {
 
 	private final EventStoreRepository eventStoreRepository;
 	private final EventProducer eventProducer;
+	private final String topic;
 
 	@Autowired
-	public AccountEventStore(EventStoreRepository eventStoreRepository, EventProducer eventProducer) {
+	public AccountEventStore(EventStoreRepository eventStoreRepository, EventProducer eventProducer,
+			@Value("${spring.kafka.producer.topic}") String topic) {
 		this.eventStoreRepository = eventStoreRepository;
 		this.eventProducer = eventProducer;
+		this.topic = topic;
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class AccountEventStore implements EventStore {
 
 			var persistedEvent = eventStoreRepository.save(eventModel);
 			if (!persistedEvent.getId().isEmpty()) {
-				eventProducer.produce(event.getClass().getSimpleName(), event);
+				eventProducer.produce(topic, event);
 			}
 		}
 	}
@@ -54,7 +57,12 @@ public class AccountEventStore implements EventStore {
 		if (eventStream.isEmpty()) {
 			throw new AggregateNotFoundException("Incorrect account ID provided");
 		}
-		return eventStream.stream().map(EventModel::getEventData).collect(Collectors.toList());
+		return eventStream.stream().map(EventModel::getEventData).toList();
+	}
+
+	@Override
+	public List<String> getAggregateIds() {
+		return eventStoreRepository.findAll().stream().map(EventModel::getAggregateId).distinct().toList();
 	}
 
 }

@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface AccountRepository extends CrudRepository<BankAccount, String> {
 	Optional<BankAccount> findByAccountHolder(String accountHolder);
 	List<BaseEntity> findByBalanceGreaterThan(BigDecimal balance);
+	List<BaseEntity> findByBalanceLessThan(BigDecimal balance);
 }

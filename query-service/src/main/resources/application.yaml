@@ -18,6 +18,7 @@ spring:
     listener:
       ack-mode: MANUAL_IMMEDIATE
     consumer:
+      topic: BankAccountEvents
       bootstrap-servers: localhost:9092
       group-id: bank-account-consumer
       auto-offset-reset: earliest

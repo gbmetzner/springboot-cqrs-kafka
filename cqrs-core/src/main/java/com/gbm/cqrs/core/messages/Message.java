@@ -1,4 +1,4 @@
-package com.gbm.account.common.dto;
+package com.gbm.cqrs.core.messages;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @SuperBuilder
-public class BaseResponse {
-	private String message;
+public abstract class Message {
+	private String id;
 }

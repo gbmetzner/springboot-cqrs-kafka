@@ -1,6 +1,6 @@
 package com.gbm;
 
-import com.gbm.command.api.cmd.*;
+import com.gbm.command.api.commands.*;
 import com.gbm.cqrs.core.infrastructure.CommandDispatcher;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,7 @@ public class CommandServiceApplication {
 		commandDispatcher.registerHandler(DepositFundsCommand.class, commandHandler::handle);
 		commandDispatcher.registerHandler(WithDrawFundsCommand.class, commandHandler::handle);
 		commandDispatcher.registerHandler(CloseAccountCommand.class, commandHandler::handle);
+		commandDispatcher.registerHandler(RestoreReadDbCommand.class, commandHandler::handle);
 	}
 
 }

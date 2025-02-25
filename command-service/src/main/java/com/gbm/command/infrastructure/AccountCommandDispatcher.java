@@ -1,7 +1,7 @@
 package com.gbm.command.infrastructure;
 
-import com.gbm.cqrs.core.command.BaseCommand;
-import com.gbm.cqrs.core.command.CommandHandlerMethod;
+import com.gbm.cqrs.core.commands.BaseCommand;
+import com.gbm.cqrs.core.commands.CommandHandlerMethod;
 import com.gbm.cqrs.core.infrastructure.CommandDispatcher;
 import org.springframework.stereotype.Service;
 

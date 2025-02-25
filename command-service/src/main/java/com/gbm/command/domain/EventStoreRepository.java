@@ -1,6 +1,6 @@
 package com.gbm.command.domain;
 
-import com.gbm.cqrs.core.event.EventModel;
+import com.gbm.cqrs.core.events.EventModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

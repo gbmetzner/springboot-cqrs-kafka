@@ -1,12 +1,12 @@
 package com.gbm.command.domain;
 
-import com.gbm.account.common.event.AccountClosedEvent;
-import com.gbm.account.common.event.AccountOpenedEvent;
-import com.gbm.account.common.event.FundsDepositedEvent;
-import com.gbm.account.common.event.FundsWithdrawnEvent;
-import com.gbm.command.api.cmd.OpenAccountCommand;
+import com.gbm.account.common.events.AccountClosedEvent;
+import com.gbm.account.common.events.AccountOpenedEvent;
+import com.gbm.account.common.events.FundsDepositedEvent;
+import com.gbm.account.common.events.FundsWithdrawnEvent;
+import com.gbm.command.api.commands.OpenAccountCommand;
 import com.gbm.cqrs.core.domain.AggregateRoot;
-import com.gbm.cqrs.core.event.BaseEvent;
+import com.gbm.cqrs.core.events.BaseEvent;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +14,10 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @NoArgsConstructor
+@Getter
 public class AccountAggregate extends AggregateRoot {
 
 	private boolean active;
-	@Getter
 	private BigDecimal balance;
 
 	public AccountAggregate(OpenAccountCommand command) {

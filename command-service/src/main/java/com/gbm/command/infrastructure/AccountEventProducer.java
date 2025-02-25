@@ -1,7 +1,7 @@
 package com.gbm.command.infrastructure;
 
-import com.gbm.cqrs.core.event.BaseEvent;
-import com.gbm.cqrs.core.producer.EventProducer;
+import com.gbm.cqrs.core.events.BaseEvent;
+import com.gbm.cqrs.core.producers.EventProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.gbm.cqrs.core.domain;
 
-import com.gbm.cqrs.core.event.BaseEvent;
+import com.gbm.cqrs.core.events.BaseEvent;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

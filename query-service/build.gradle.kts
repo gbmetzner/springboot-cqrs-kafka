@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.kafka:spring-kafka")
@@ -26,6 +27,10 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2")
 
     runtimeOnly("com.mysql:mysql-connector-j:9.2.0")
+
+    implementation("org.apache.logging.log4j:log4j-api:2.24.3")
+    implementation("org.apache.logging.log4j:log4j-core:2.24.3")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.24.3")
 
     implementation(project(":cqrs-core"))
     implementation(project(":account-common"))
