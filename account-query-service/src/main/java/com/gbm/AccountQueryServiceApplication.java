@@ -8,19 +8,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QueryServiceApplication {
+public class AccountQueryServiceApplication {
 
 	private final QueryDispatcher dispatcher;
 	private final QueryHandler queryHandler;
 
 	@Autowired
-	public QueryServiceApplication(QueryDispatcher dispatcher, QueryHandler queryHandler) {
+	public AccountQueryServiceApplication(QueryDispatcher dispatcher, QueryHandler queryHandler) {
 		this.dispatcher = dispatcher;
 		this.queryHandler = queryHandler;
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(QueryServiceApplication.class, args);
+		SpringApplication.run(AccountQueryServiceApplication.class, args);
 	}
 
 	@PostConstruct

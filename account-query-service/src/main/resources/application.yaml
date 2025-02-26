@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: "query-service"
+    name: "account-query-service"
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true

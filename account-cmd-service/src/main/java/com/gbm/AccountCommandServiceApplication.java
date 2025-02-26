@@ -8,19 +8,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CommandServiceApplication {
+public class AccountCommandServiceApplication {
 
 	private final CommandDispatcher commandDispatcher;
 	private final CommandHandler commandHandler;
 
 	@Autowired
-	public CommandServiceApplication(CommandDispatcher commandDispatcher, CommandHandler commandHandler) {
+	public AccountCommandServiceApplication(CommandDispatcher commandDispatcher, CommandHandler commandHandler) {
 		this.commandDispatcher = commandDispatcher;
 		this.commandHandler = commandHandler;
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommandServiceApplication.class, args);
+		SpringApplication.run(AccountCommandServiceApplication.class, args);
 	}
 
 	@PostConstruct

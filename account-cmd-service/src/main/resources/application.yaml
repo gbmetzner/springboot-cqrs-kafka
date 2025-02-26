@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: command-service
+    name: account-cmd-service
   data:
     mongodb:
       host: localhost
